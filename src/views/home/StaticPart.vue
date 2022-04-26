@@ -37,7 +37,7 @@
   </div>
   <div class="gap"></div>
   <!-- 附近店铺 -->
-  <div class="nearby" >
+  <!-- <div class="nearby" >
     <h3 class="nearby__title">附近店铺</h3>
     <div class="nearby__item" v-for="item in shopsList" :key="item.title">
         <img
@@ -56,7 +56,7 @@
           </div>
         </div>
       </div>
-  </div>
+  </div> -->
 </template>
 <script>
 export default {
@@ -84,74 +84,74 @@ export default {
       { imgName: '大牌免运', desc: '大牌免运' },
       { imgName: '红包', desc: '红包套餐' }
     ]
-    const shopsList = [
-      {
-        imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop1.png',
-        title: '沃尔玛',
-        tag1: '月售1万+',
-        tag2: '起送￥0元',
-        tag3: '基础运费￥5',
-        content: 'VIP尊享满99减4元运费券（每月3张）'
-      },
-      {
-        imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop2.png',
-        title: '山姆会员店',
-        tag1: '月售1万+',
-        tag2: '起送￥0元',
-        tag3: '基础运费￥5',
-        content: '联合利华洗护满10减5'
-      },
-      {
-        imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop1.png',
-        title: '沃尔玛',
-        tag1: '月售1万+',
-        tag2: '起送￥0元',
-        tag3: '基础运费￥5',
-        content: 'VIP尊享满99减4元运费券（每月3张）'
-      },
-      {
-        imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop2.png',
-        title: '山姆会员店',
-        tag1: '月售1万+',
-        tag2: '起送￥0元',
-        tag3: '基础运费￥5',
-        content: '联合利华洗护满10减5'
-      },
-      {
-        imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop1.png',
-        title: '沃尔玛',
-        tag1: '月售1万+',
-        tag2: '起送￥0元',
-        tag3: '基础运费￥5',
-        content: 'VIP尊享满99减4元运费券（每月3张）'
-      },
-      {
-        imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop2.png',
-        title: '山姆会员店',
-        tag1: '月售1万+',
-        tag2: '起送￥0元',
-        tag3: '基础运费￥5',
-        content: '联合利华洗护满10减5'
-      },
-      {
-        imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop1.png',
-        title: '沃尔玛',
-        tag1: '月售1万+',
-        tag2: '起送￥0元',
-        tag3: '基础运费￥5',
-        content: 'VIP尊享满99减4元运费券（每月3张）'
-      },
-      {
-        imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop2.png',
-        title: '山姆会员店',
-        tag1: '月售1万+',
-        tag2: '起送￥0元',
-        tag3: '基础运费￥5',
-        content: '联合利华洗护满10减5'
-      }
+    // const shopsList = [
+    //   {
+    //     imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop1.png',
+    //     title: '沃尔玛',
+    //     tag1: '月售1万+',
+    //     tag2: '起送￥0元',
+    //     tag3: '基础运费￥5',
+    //     content: 'VIP尊享满99减4元运费券（每月3张）'
+    //   },
+    //   {
+    //     imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop2.png',
+    //     title: '山姆会员店',
+    //     tag1: '月售1万+',
+    //     tag2: '起送￥0元',
+    //     tag3: '基础运费￥5',
+    //     content: '联合利华洗护满10减5'
+    //   },
+    //   {
+    //     imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop1.png',
+    //     title: '沃尔玛',
+    //     tag1: '月售1万+',
+    //     tag2: '起送￥0元',
+    //     tag3: '基础运费￥5',
+    //     content: 'VIP尊享满99减4元运费券（每月3张）'
+    //   },
+    //   {
+    //     imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop2.png',
+    //     title: '山姆会员店',
+    //     tag1: '月售1万+',
+    //     tag2: '起送￥0元',
+    //     tag3: '基础运费￥5',
+    //     content: '联合利华洗护满10减5'
+    //   },
+    //   {
+    //     imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop1.png',
+    //     title: '沃尔玛',
+    //     tag1: '月售1万+',
+    //     tag2: '起送￥0元',
+    //     tag3: '基础运费￥5',
+    //     content: 'VIP尊享满99减4元运费券（每月3张）'
+    //   },
+    //   {
+    //     imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop2.png',
+    //     title: '山姆会员店',
+    //     tag1: '月售1万+',
+    //     tag2: '起送￥0元',
+    //     tag3: '基础运费￥5',
+    //     content: '联合利华洗护满10减5'
+    //   },
+    //   {
+    //     imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop1.png',
+    //     title: '沃尔玛',
+    //     tag1: '月售1万+',
+    //     tag2: '起送￥0元',
+    //     tag3: '基础运费￥5',
+    //     content: 'VIP尊享满99减4元运费券（每月3张）'
+    //   },
+    //   {
+    //     imgUrl: 'https://soft2176-use.oss-cn-hangzhou.aliyuncs.com/jingdong/icon/shop2.png',
+    //     title: '山姆会员店',
+    //     tag1: '月售1万+',
+    //     tag2: '起送￥0元',
+    //     tag3: '基础运费￥5',
+    //     content: '联合利华洗护满10减5'
+    //   }
 
-    ]
-    return { iconsList, shopsList }
+    // ]
+    return { iconsList }
   }
 }
 </script>

@@ -1,26 +1,27 @@
-/* eslint-disable vue/no-unused-components */
 <template>
-  <div class="wrapper">
-    <static-part />
+  <div class="warpper">
+    <StaticPart />
+    <NearByShop />
   </div>
-  <app-docker :currentIndex="0" />
+  <AppDocker :currentIndex="0" />
 </template>
 
 <script>
-import StaticPart from './StaticPart.vue'
-import AppDocker from '../../components/AppDocker.vue'
-
+import StaticPart from './StaticPart'
+import AppDocker from '../../components/AppDocker'
+import NearByShop from './NearbyShop'
 export default {
   name: 'HomePage',
   components: {
     StaticPart,
-    AppDocker
+    AppDocker,
+    NearByShop
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
+.warpper {
   overflow-y: auto;
   position: absolute;
   left: 0;

@@ -27,9 +27,18 @@
           </p>
         </div>
         <div class="product__number">
-          <span class="product__number__minus iconfont">&#xe677;</span>
-          1
-          <span class="product__number__plus iconfont">&#xe620;</span>
+          <span
+            class="product__number__minus iconfont"
+            @click="() => {
+                changeCartItem(shopId, item._id, item, -1);
+              }"
+            >&#xe677;</span
+          >
+          {{ getProductCartCount(shopId, item._id) }}
+          <span class="product__number__plus iconfont"
+           @click="() => {
+                changeCartItem(shopId, item._id, item, 1);
+              }">&#xe620;</span>
         </div>
       </div>
     </div>
@@ -39,6 +48,7 @@
 <script setup>
 import { reactive, ref, toRefs, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 import { get } from '../../utils/request'
 
 const categories = [
@@ -77,11 +87,39 @@ const getContentData = async () => {
 }
 
 const { list } = toRefs(content)
+
+// 店铺id
+const shopId = ref(route.params.id)
+
+// vuex中的购物车响应数据
+const store = useStore()
+const cartList = store.state.cartList
+
+// 改变购车信息 （提交的参数对象包括：店铺id、商品id、商品自身信息、数量）
+const changeCartItemInfo = (shopId, productId, productInfo, num) => {
+  store.commit('changeCartItemInfo', {
+    shopId,
+    productId,
+    productInfo,
+    num
+  })
+}
+
+const getProductCartCount = (shopId, productId) => {
+  return cartList?.[shopId]?.productList?.[productId]?.count || 0
+}
+const changeShop = (shopId) => {
+  store.commit('changeShop', shopId)
+}
+const changeCartItem = (shopId, productId, item, num) => {
+  changeCartItemInfo(shopId, productId, item, num)
+  changeShop(shopId)
+}
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/virables.scss';
-@import '../../style/mixins.scss';
+@import "../../style/virables.scss";
+@import "../../style/mixins.scss";
 .content {
   display: flex;
   position: absolute;
@@ -90,7 +128,7 @@ const { list } = toRefs(content)
   top: 1.5rem;
   bottom: 0.5rem;
 }
-.category{
+.category {
   overflow-y: scroll;
   height: 100%;
   width: 100%;
@@ -101,7 +139,7 @@ const { list } = toRefs(content)
     text-align: center;
     font-size: 0.14rem;
     color: #333;
-    &--active{
+    &--active {
       background: $bgColor;
     }
   }
@@ -118,33 +156,33 @@ const { list } = toRefs(content)
     &__detail {
       overflow: hidden;
     }
-    &__img{
+    &__img {
       width: 0.68rem;
       height: 0.68rem;
       margin-right: 0.16rem;
     }
-    &__title{
+    &__title {
       margin: 0;
       line-height: 0.2rem;
       font-size: 0.14rem;
       color: $content-fontcolor;
       @include ellipsis;
     }
-    &__sales{
+    &__sales {
       margin: 0.06rem 0;
       font-size: 0.12rem;
       color: $content-fontcolor;
     }
-    &__price{
+    &__price {
       margin: 0;
       line-height: 0.2rem;
       font-size: 0.14rem;
       color: $hightlight-fontColor;
     }
-    &__yen{
+    &__yen {
       font-size: 0.12rem;
     }
-    &__origin{
+    &__origin {
       margin-left: 0.06rem;
       line-height: 0.2rem;
       font-size: 0.12rem;
@@ -156,13 +194,13 @@ const { list } = toRefs(content)
       right: 0;
       bottom: 0.12rem;
       line-height: 0.18rem;
-      &__minus{
+      &__minus {
         position: relative;
-        top:0.02rem;
-        color:$medium-fontColor;
+        top: 0.02rem;
+        color: $medium-fontColor;
         margin-right: 0.05rem;
       }
-      &__plus{
+      &__plus {
         position: relative;
         top: 0.02rem;
         color: $btn-bgColor;
@@ -171,5 +209,4 @@ const { list } = toRefs(content)
     }
   }
 }
-
 </style>

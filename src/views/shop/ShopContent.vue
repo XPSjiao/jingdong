@@ -103,6 +103,30 @@ const changeCartItemInfo = (shopId, productId, productInfo, num) => {
     productInfo,
     num
   })
+
+  // 计算该店铺商品的数量和总价
+  const productList = cartList[shopId]?.productList
+  const result = {
+    total: 0,
+    price: 0,
+    allChecked: true
+  }
+  if (productList) {
+    for (const i in productList) {
+      const product = productList[i]
+      result.total += product.count
+      if (product.check) {
+        result.price += product.count * product.price
+      }
+      if (product.count > 0 && !product.check) {
+        result.allChecked = false
+      }
+    }
+  }
+  result.price = result.price.toFixed(2)
+  console.log(result)
+  // 提交
+  store.commit('setTotal', { shopId, total: result })
 }
 
 const getProductCartCount = (shopId, productId) => {

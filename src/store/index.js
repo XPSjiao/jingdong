@@ -32,12 +32,16 @@ export default Vuex.createStore({
       if (payload.num > 0) {
         product.check = true
       }
-      if (payload.count < 0) {
+      if (payload.num < 0) {
         product.count = 0
       }
       shopCartList.productList[productId] = product
       state.cartList[shopId] = shopCartList
       setLocalCartList(state)
+    },
+    setTotal (state, payload) {
+      const { shopId, total } = payload
+      state.cartList[shopId].total = total
     },
     changeShop (state, shopId) {
       const shopCartList = state.cartList[shopId] || {

@@ -7,17 +7,37 @@
           class="check__icon__img"
           alt=""
         />
-        <div class="check__icon__tag">1</div>
+        <!-- <div class="check__icon__tag">1</div> -->
+        <div class="check__icon__tag">{{ total(shopId) }}</div>
       </div>
 
       <div class="check__info">
-        总计 <span class="check__info__price">￥123</span>
+        总计 <span class="check__info__price">￥{{ price(shopId) }}</span>
       </div>
       <div class="check__btn">去结算</div>
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+import { useStore } from 'vuex'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const shopId = ref(route.params.id)
+console.log(shopId)
+
+const store = useStore()
+const cartList = store.state.cartList
+
+const total = (shopId) => {
+  return cartList?.[shopId]?.total?.total || 0
+}
+const price = (shopId) => {
+  return cartList?.[shopId]?.total?.price || 0
+}
+
+</script>
 <style lang="scss" scoped>
 @import "../../style/virables.scss";
 @import "../../style/mixins.scss";
